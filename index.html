@@ -124,6 +124,25 @@
             transform: scale(0.98);
             background-color: var(--color-rust-tone);
         }
+
+        /* Allow modal content to scroll on mobile */
+        /* Mobile: modal aligns at top so content can scroll */
+        #drummerModal {
+            align-items: flex-start !important;
+            justify-content: center;
+            /* keep horizontal centering */
+            padding-top: 5vh !important;
+            overflow-y: auto;
+        }
+
+        /* Desktop: restore original perfect centering */
+        @media (min-width: 768px) {
+            #drummerModal {
+                align-items: center !important;
+                justify-content: center !important;
+                padding-top: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -545,8 +564,7 @@
     </div>
 
     <!-- Profile Modal -->
-    <div id="drummerModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex items-center justify-center p-4"
-        onclick="closeModal()">
+    <div id="drummerModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex p-4" onclick="closeModal()">
         <div class="main-card-bg p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-[--color-main-orange]"
             onclick="event.stopPropagation()">
 
