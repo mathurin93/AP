@@ -111,14 +111,6 @@
             outline-offset: 3px;
         }
 
-        #modalImage {
-            width: 128px;
-            height: 128px;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto;
-        }
-
         /* Custom class for the dark welcome card */
         .welcome-card-dark {
             background-color: rgba(58, 42, 36, 0.95);
@@ -138,7 +130,6 @@
 <body>
     <!-- Audio Player (Hidden) - Starts playing when the user clicks the button -->
     <audio id="backgroundAudio" loop>
-        <!-- FIX: Updated the src to correctly reference the user's uploaded MP3 file path -->
         <source src="/files/ytmp3free.cc_lord-of-the-harvest-lindy-cofer-official-video-youtubemp3free.org.mp3"
             type="audio/mpeg">
         Your browser does not support the audio element.
@@ -151,11 +142,9 @@
         <!-- Welcome Card (now darker with theme included) -->
         <div class="max-w-2xl text-center text-white rounded-2xl p-8 welcome-card-dark">
 
-            <!-- UPDATED: Added "14th" -->
             <p class="text-xl sm:text-2xl font-light mb-1 text-[--color-tan-highlight]">Welcome to our 14th Anniversary
                 Service</p>
 
-            <!-- UPDATED: Adjusted margin to mb-4 after removing the h2 below -->
             <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">Reaping The Harvest</h1>
 
             <p class="mb-6 text-lg sm:text-xl">Thank you for joining us. We celebrate God's faithfulness and invite you
@@ -175,15 +164,14 @@
         <header class="text-center mb-10 reveal">
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight primary-heading-text mb-2">Reaping The Harvest
             </h1>
-        <h2 class="text-lg sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
-            Saturday, December 6, 2025 | 10:30 am
-        </h2>
+            <h2 class="text-xl sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
+                Saturday, December 6, 2025 | 10:30 am</h2>
 
-
-            <!-- START OF USER'S IMAGE UPDATE -->
+            <!-- START OF UPDATED IMAGE SECTION (Made significantly larger and placed at the top) -->
             <img src="Images/Flyer1.png" alt="Church Harvest Theme Logo"
-                class="w-full max-w-lg sm:max-w-xl md:max-w-2xl h-auto rounded-lg shadow-xl border-2 border-[--color-main-orange] mx-auto my-6 reveal">
-            <!-- END OF USER'S IMAGE UPDATE -->
+                class="w-full max-w-5xl md:max-w-3xl h-auto rounded-lg shadow-xl border-2 border-[--color-main-orange] mx-auto my-6 reveal"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x250/C65F28/F4EDE3?text=Anniversary+Theme';">
+            <!-- END OF UPDATED IMAGE SECTION -->
 
             <a href="https://cogsabbath.org/" target="_blank"
                 class="text-lg font-bold transition duration-300 underline block mb-6 p-3 rounded-lg reveal bg-[--color-main-orange] text-[--color-cream-light] hover:bg-opacity-80">Visit
@@ -195,8 +183,9 @@
             <p class="text-lg font-bold text-[--color-cream-light] mb-2 tracking-wider">Service Moderator</p>
             <p class="text-xs font-semibold text-[--color-tan-highlight] mb-4">Click name for profile information</p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                <!-- Deacon Leonard Bryan -->
                 <div tabindex="0"
-                    onclick="showProfile('Bro Shannon Lynch', 'Serving as the Moderator for the Anniversary Program, leading the flow and announcements.', 'Images/Shannon.jpeg', 'https://facebook.com/shannon_lynch')"
+                    onclick="showProfile('Bro Shannon Lynch', 'Serving as the Moderator for the Anniversary Program, leading the flow and announcements.', '/Images/Shannon.jpeg')"
                     class="transition-all duration-300 ease-in-out p-3 rounded-xl cursor-pointer hover:shadow-xl hover:scale-[1.03] hover:bg-[--color-main-orange]/50 focus:ring-4 focus:ring-[--color-tan-highlight]/50"
                     style="outline-offset: 3px;">
                     <p class="text-3xl font-extrabold text-[--color-cream-light]">Bro Shannon Lynch</p>
@@ -237,7 +226,7 @@
                 class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
-                        <span class="font-bold cream-text-highlight">10:50 am | Praise & Worship</span>
+                        <span class="font-bold cream-text-highlight">10:50 am | Praise & Worship (2 Songs)</span>
                         <span class="secondary-highlight-text text-base">Worship Team</span>
                     </span>
                     <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -339,11 +328,11 @@
 
             <!-- Segment 9: Praise & Worship (Chorus) (12:20 pm) - STATIC -->
             <div tabindex="0"
-                onclick="showProfile('Worship Team', 'The team leading the congregation in two songs of praise and worship during the opening segment.', 'Images/PraiseTeam.jpeg')"
+                onclick="showProfile('Worship Team', 'Leading a chorus of praise to transition between the morning program segments.', 'Images/PraiseTeam.jpeg')"
                 class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
-                        <span class="font-bold cream-text-highlight">12:20 pm | Praise & Worship</span>
+                        <span class="font-bold cream-text-highlight">~12:20 pm | Praise & Worship</span>
                         <span class="secondary-highlight-text text-base">Worship Team</span>
                     </span>
                     <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -353,36 +342,51 @@
                 </div>
             </div>
 
-            <!-- Segment 10: Prayer (12:30 pm) - STATIC -->
-            <div
-                class="schedule-item schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
+            <!-- Segment 10: Prayer (12:30 pm) - INTERACTIVE (Sis Karen Brown) -->
+            <div tabindex="0"
+                onclick="showProfile('Sis Karen Brown', 'Leading the congregation in prayer.', 'Images/Karen.jpeg')"
+                class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">12:30 pm | Prayer</span>
                         <span class="secondary-highlight-text text-base">Sis Karen Brown</span>
                     </span>
+                    <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
             </div>
 
-            <!-- Segment 11: Scripture Reading (12:40 pm) - STATIC -->
-            <div
-                class="schedule-item reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
+            <!-- Segment 11: Scripture Reading (12:40 pm) - INTERACTIVE (Sis. Michelle Hamilton-Cubitt) -->
+            <div tabindex="0"
+                onclick="showProfile('Sis. Michelle Hamilton-Cubitt', 'Reading the Anniversary Scripture for the service (Matthew 9:35-38).', 'Images/Michelle.jpeg')"
+                class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">12:40 pm | Scripture Reading (Matt 9:35-38)</span>
                         <span class="secondary-highlight-text text-base">Sis. Michelle Hamilton-Cubitt</span>
                     </span>
+                    <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
             </div>
 
-            <!-- Segment 12: Welcome Address (12:45 pm) - STATIC -->
-            <div
-                class="schedule-item schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
+            <!-- Segment 12: Welcome Address (12:45 pm) - INTERACTIVE (Sis. Melonie Ricketts) -->
+            <div tabindex="0"
+                onclick="showProfile('Sis. Melonie Ricketts', 'Giving the official Welcome Address to all our guests and congregation members.', 'Images/Melonie.jpeg')"
+                class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">12:45 pm | Welcome Address</span>
                         <span class="secondary-highlight-text text-base">Sis. Melonie Ricketts</span>
                     </span>
+                    <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
             </div>
 
@@ -397,10 +401,10 @@
                 </div>
             </div>
 
-            <!-- Segment 14: Offering / Our Vision & Journey (1:05 pm - 1:15 pm) - INTERACTIVE (Pastor Clarence Duff) -->
-            <div tabindex="0"
-                onclick="showProfile('Pastor Clarence Duff', 'Sharing the church’s vision and journey, with acknowledgement to Sis. Melleta Brown and Sis. Anne Duff.', 'Images/Clarence.jpeg')"
-                class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 gold-highlight-box transition-all duration-300 ease-in-out">
+            <!-- Segment 14: Offering / Our Vision & Journey (1:05 pm - 1:15 pm) - INTERACTIVE (Pastor Duff, Sis. Brown, Sis. Duff) -->
+            <div tabindex="0" onclick="showGroupProfile()"
+                class="schedule-item interactive reveal flex flex-col items-center p-5 rounded-xl shadow-lg border-l-4 gold-highlight-box transition-all duration-300 ease-in-out">
+
                 <div class="w-full flex justify-between items-center">
                     <span class="w-full flex flex-col items-start">
                         <span class="cream-text-highlight text-xl font-extrabold">1:05 pm | Offering & Our Vision &
@@ -413,6 +417,20 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </div>
+            </div>
+
+            <div id="groupProfileImages" class="flex justify-center space-x-4 mb-4 mt-2 w-full" style="display: none;">
+                <img src="Images/Clarence.jpeg" alt="Pastor Clarence Duff"
+                    onerror="this.onerror=null;this.src='Images/Clarence.jpeg';"
+                    class="rounded-full w-16 h-16 object-cover border-2 border-[--color-main-orange] shadow-lg flex-shrink-0">
+
+                <img src="Images/Melleta.jpeg" alt="Sis. Melleta Brown"
+                    onerror="this.onerror=null;this.src='Images/Melleta.jpeg';"
+                    class="rounded-full w-16 h-16 object-cover border-2 border-[--color-main-orange] shadow-lg flex-shrink-0">
+
+                <img src="Images/Anne.jpeg" alt="Sis. Anne Duff"
+                    onerror="this.onerror=null;this.src='Images/Anne.jpeg';"
+                    class="rounded-full w-16 h-16 object-cover border-2 border-[--color-main-orange] shadow-lg flex-shrink-0">
             </div>
 
             <!-- Segment 15: Selection: COG Brampton Choir (1:15 pm) - INTERACTIVE (COG Brampton Choir) -->
@@ -431,18 +449,23 @@
                 </div>
             </div>
 
-            <!-- Segment 16: Spoken Word (1:30 pm) - STATIC -->
-            <div
-                class="schedule-item schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
+            <!-- Segment 16: Spoken Word (1:30 pm) - INTERACTIVE (Sis. Heather Edwards) -->
+            <div tabindex="0"
+                onclick="showProfile('Sis. Heather Edwards', 'Presenting a special Spoken Word piece.', 'Images/Heather.jpeg')"
+                class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">1:30 pm | Spoken Word</span>
                         <span class="secondary-highlight-text text-base">Sis. Heather Edwards</span>
                     </span>
+                    <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
             </div>
 
-            <!-- Segment 17: Praise & Worship: Guest Psalmist (1:40 pm) - INTERACTIVE (Trey Duhaney with Socials) -->
+            <!-- Segment 17: Praise & Worship: Guest Psalmist (1:40 pm) - INTERACTIVE (Trey Duhaney WITH Socials) -->
             <div tabindex="0"
                 onclick="showProfile('Guest Psalmist Trey Duhaney', 'Trey Duhaney shares a special worship segment with the congregation.', 'Images/Trey.jpeg', 'https://instagram.com/trey_duhaney', 'https://facebook.com/trey_duhaney')"
                 class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
@@ -458,15 +481,20 @@
                 </div>
             </div>
 
-            <!-- Segment 18: Introduction of Speaker (2:10 pm) - STATIC -->
-            <div
-                class="schedule-item schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 gold-highlight-box transition-all duration-300 ease-in-out">
+            <!-- Segment 18: Introduction of Speaker (2:10 pm) - INTERACTIVE (Donovan Dixion) -->
+            <div tabindex="0"
+                onclick="showProfile('Donovan Dixion', 'Introducing the Main Speaker, Pastor Clarence Duff, for the keynote address.', 'Images/Donovan.jpeg')"
+                class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="w-full flex flex-col items-start">
                         <span class="cream-text-highlight text-xl font-extrabold">2:10 pm | Introduction of
                             Speaker</span>
                         <span class="secondary-highlight-text text-lg">Donovan Dixion</span>
                     </span>
+                    <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
             </div>
 
@@ -521,27 +549,14 @@
         onclick="closeModal()">
         <div class="main-card-bg p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-[--color-main-orange]"
             onclick="event.stopPropagation()">
-            <img id="modalImage" src="" alt="Profile Photo"
-                onerror="this.onerror=null; this.src='https://placehold.co/128x128/C65F28/F4EDE3?text=Profile';"
-                class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange]">
-            <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3"></h3>
-            <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base"></p>
 
-            <div id="socialLinks" class="flex justify-center space-x-6 mb-8">
-                <a id="instagramLink" href="#" target="_blank"
-                    class="secondary-highlight-text hover:text-[--color-brown-dark] transition hidden"
-                    title="Instagram Profile">
-                    <i class='bx bxl-instagram text-4xl'></i>
-                </a>
-                <a id="facebookLink" href="#" target="_blank"
-                    class="secondary-highlight-text hover:text-[--color-brown-dark] transition hidden"
-                    title="Facebook Profile">
-                    <i class='bx bxl-facebook-circle text-4xl'></i>
-                </a>
+            <!-- Dynamic content container -->
+            <div id="modalContentContainer">
+                <!-- Content will be injected here by JS -->
             </div>
 
             <button onclick="closeModal()"
-                class="w-full py-3 bg-[--color-main-orange] text-white font-bold rounded-lg hover:opacity-80 transition">Close</button>
+                class="w-full py-3 bg-[--color-main-orange] text-white font-bold rounded-lg hover:opacity-80 transition mt-6">Close</button>
         </div>
     </div>
 
@@ -572,39 +587,75 @@
 
         reveals.forEach(el => observer.observe(el));
 
-        // MODAL FUNCTIONS
+
+        // --- PROFILE MODAL LOGIC ---
+
+        /**
+         * Helper function to handle broken image URLs with a thematic placeholder.
+         * @param {HTMLImageElement} imgElement - The image element that failed to load.
+         * @param {string} name - The name of the person for the placeholder text.
+         */
+        function handleImageError(imgElement, name) {
+            imgElement.onerror = null;
+            const fg = getComputedStyle(document.documentElement).getPropertyValue('--color-cream-light').replace('#', '');
+            const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-main-orange').replace('#', '');
+            // Use first name or the first part of the title for the placeholder text
+            const textPlaceholder = name.split(' ')[0].replace(/[^a-zA-Z]/g, '') + ' Photo';
+            imgElement.src = `https://placehold.co/128x128/${bg}/${fg}?text=${textPlaceholder.replace(/\s/g, '+')}`;
+        };
+
+        /**
+         * Shows a modal for a single profile.
+         */
         function showProfile(name, detail, imageUrl, instagramUrl = '', facebookUrl = '') {
-            document.getElementById('modalName').textContent = name;
-            document.getElementById('modalDetail').innerHTML = detail;
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageUrl;
-            // Enhanced placeholder fallback to use CSS variables for matching theme
-            modalImage.onerror = function () {
-                this.onerror = null;
-                const fg = getComputedStyle(document.documentElement).getPropertyValue('--color-cream-light').replace('#', '');
-                const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-main-orange').replace('#', '');
-                this.src = `https://placehold.co/128x128/${bg}/${fg}?text=${name.split(' ')[0]}+Photo`;
-            };
-
-            const instagramLink = document.getElementById('instagramLink');
-            const facebookLink = document.getElementById('facebookLink');
-
-            if (instagramUrl && instagramUrl !== '#') {
-                instagramLink.href = instagramUrl;
-                instagramLink.classList.remove('hidden');
-            } else {
-                instagramLink.classList.add('hidden');
-            }
-
-            if (facebookUrl && facebookUrl !== '#') {
-                facebookLink.href = facebookUrl;
-                facebookLink.classList.remove('hidden');
-            } else {
-                facebookLink.classList.add('hidden');
-            }
-
+            // Build the single profile HTML structure
+            const content = `
+                <img id="modalImage" src="${imageUrl}" alt="${name} Photo" onerror="handleImageError(this, '${name}')" 
+                    class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange] w-32 h-32 object-cover">
+                <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3">${name}</h3>
+                <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
+                <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
+                    ${instagramUrl && instagramUrl !== '#' && instagramUrl.startsWith('http') ? `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition' title="Instagram Profile"><i class='bx bxl-instagram text-4xl'></i></a>` : ''}
+                    ${facebookUrl && facebookUrl !== '#' && facebookUrl.startsWith('http') ? `<a href="${facebookUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition' title="Facebook Profile"><i class='bx bxl-facebook-circle text-4xl'></i></a>` : ''}
+                </div>
+            `;
+            document.getElementById('modalContentContainer').innerHTML = content;
             document.getElementById('drummerModal').classList.remove('hidden');
             // Accessibility focus on the modal's primary action
+            document.getElementById('drummerModal').querySelector('button').focus();
+        }
+
+        /**
+         * Shows a customized modal for the three-person group profile at 1:05 PM.
+         */
+        function showGroupProfile() {
+            // Define the three profiles with their unique image paths
+            const profiles = [
+                { name: "Pastor Clarence Duff", role: "Main Speaker & Vision Casting", img: 'Images/Clarence.jpeg' },
+                { name: "Sis. Melleta Brown", role: "Vision & Journey Coordinator", img: 'Images/Melleta.jpeg' },
+                { name: "Sis. Anne Duff", role: "Vision & Journey Coordinator", img: 'Images/Anne.jpeg' }
+            ];
+
+            // UPDATED: Changed w-24 h-24 to w-32 h-32 for bigger images in the modal
+            let profilesHtml = profiles.map(p => `
+                <div class="flex flex-col items-center p-3 sm:w-1/3 w-full">
+                    <img src="${p.img}" alt="${p.name} Photo" onerror="handleImageError(this, '${p.name}')" 
+                        class="rounded-full w-32 h-32 object-cover mb-3 border-4 border-[--color-rust-tone] shadow-lg">
+                    <p class="font-bold text-xl text-center secondary-highlight-text">${p.name}</p>
+                    <p class="text-sm text-center text-[--color-brown-dark] opacity-70">${p.role}</p>
+                </div>
+            `).join('');
+
+            const content = `
+                <h3 class="text-3xl font-extrabold primary-heading-text text-center mb-6">Offering / Our Vision & Journey</h3>
+                <p class="text-[--color-brown-dark] text-center mb-6 text-lg font-medium">Pastor Duff leads the offering and vision segment, supported by Sis. Brown and Sis. Duff who help coordinate the church's strategic journey.</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
+                    ${profilesHtml}
+                </div>
+            `;
+
+            document.getElementById('modalContentContainer').innerHTML = content;
+            document.getElementById('drummerModal').classList.remove('hidden');
             document.getElementById('drummerModal').querySelector('button').focus();
         }
 
