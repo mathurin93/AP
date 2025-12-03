@@ -172,7 +172,7 @@
         <!-- Welcome Card (now darker with theme included) -->
         <div class="max-w-2xl text-center text-white rounded-2xl p-8 welcome-card-dark">
 
-            <p class="text-xl sm:text-2xl font-light mb-1 text-[--color-tan-highlight]">Welcome to our 14th Anniversary
+            <p class="text-xl sm:text-2xl font-light mb-1 text-[--color-tan-highlight]">Welcome to our Thanksgiving
                 Service</p>
 
             <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">Reaping The Harvest</h1>
@@ -194,12 +194,11 @@
         <header class="text-center mb-10 reveal">
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight primary-heading-text mb-2">Reaping The Harvest
             </h1>
-            <h2 class="text-lg sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
-                Saturday, December 6, 2025 | 10:30 am
-            </h2>
+            <h2 class="text-xl sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
+                Saturday, December 6, 2025 | 10:30 am</h2>
 
             <!-- START OF UPDATED IMAGE SECTION (Made significantly larger and placed at the top) -->
-            <img src="Images/Flyer1.png" alt="Church Harvest Theme Logo"
+            <img src="Images/Flyer1.jpg" alt="Church Harvest Theme Logo"
                 class="w-full max-w-5xl md:max-w-3xl h-auto rounded-lg shadow-xl border-2 border-[--color-main-orange] mx-auto my-6 reveal"
                 onerror="this.onerror=null;this.src='https://placehold.co/800x250/C65F28/F4EDE3?text=Anniversary+Theme';">
             <!-- END OF UPDATED IMAGE SECTION -->
@@ -229,9 +228,9 @@
 
         <div class="space-y-3" id="scheduleList">
 
-            <!-- Sub-Header 1: Morning Devotion & Anniversary Program -->
+            <!-- Sub-Header 1: Morning Devotion & Thanksgiving Program -->
             <h4 class="text-2xl font-bold text-center secondary-highlight-text mt-8 mb-4 reveal">Morning Devotion &
-                Anniversary Program</h4>
+                Thanksgiving Program</h4>
             <div class="w-24 h-1 bg-[--color-main-orange] mx-auto rounded-full mb-6"></div>
 
 
@@ -285,8 +284,8 @@
 
             <!-- Segment 4: Relay Speaker 2 (11:25 am - approximate) - INTERACTIVE (Bro. Matt Robinson) -->
             <div tabindex="0"
-                onclick="showProfile('Bro. Matt Robinson', 'Second in the relay speaker segment.', 'Images/Matt.jpeg')"
-                class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
+                onclick="showProfile('Bro. Matt Robinson', 'Second in the relay speaker segment.', 'Images/Matt.jpeg', '', '', 'https://mattrobinsondeveloper.com/')"
+     class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">~11:25 am | Relay Speaker</span>
@@ -627,34 +626,44 @@
             imgElement.src = `https://placehold.co/128x128/${bg}/${fg}?text=${textPlaceholder.replace(/\s/g, '+')}`;
         };
 
-        function showProfile(name, detail, imageUrl, instagramUrl = '', youtubeUrl = '') {
-            const content = `
-            <div id="modalTop" tabindex="-1"></div>
-            <img id="modalImage" src="${imageUrl}" alt="${name} Photo" 
-                 onerror="handleImageError(this, '${name}')" 
-                 class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange] w-32 h-32 object-cover">
-            <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3">${name}</h3>
-            <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
-            <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
-                ${instagramUrl && instagramUrl.startsWith('http') ? `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-instagram text-4xl'></i></a>` : ''}
-                ${youtubeUrl && youtubeUrl.startsWith('http') ? `<a href="${youtubeUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-youtube text-4xl'></i></a>` : ''}
-            </div>
-        `;
-            document.getElementById('modalContentContainer').innerHTML = content;
+        function showProfile(name, detail, imageUrl, instagramUrl = '', youtubeUrl = '', websiteUrl = '') {
+                const content = `
+        <div id="modalTop" tabindex="-1"></div>
+        <img id="modalImage" src="${imageUrl}" alt="${name} Photo" 
+             onerror="handleImageError(this, '${name}')" 
+             class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange] w-32 h-32 object-cover">
+        <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3">${name}</h3>
+        <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
+        <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
+            ${instagramUrl && instagramUrl.startsWith('http') ?
+                        `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'>
+                    <i class='bx bxl-instagram text-4xl'></i>
+                 </a>` : ''}
+            ${youtubeUrl && youtubeUrl.startsWith('http') ?
+                        `<a href="${youtubeUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'>
+                    <i class='bx bxl-youtube text-4xl'></i>
+                 </a>` : ''}
+            ${websiteUrl && websiteUrl.startsWith('http') ?
+                        `<a href="${websiteUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'>
+                    <i class='bx bx-globe text-4xl'></i>
+                 </a>` : ''}
+        </div>
+    `;
+                document.getElementById('modalContentContainer').innerHTML = content;
 
-            const modal = document.getElementById('drummerModal');
-            modal.classList.remove('hidden');
-            modal.classList.remove('special-105'); // ensure normal spacing
+                const modal = document.getElementById('drummerModal');
+                modal.classList.remove('hidden');
+                modal.classList.remove('special-105'); // ensure normal spacing
 
-            const panel = modal.querySelector('.modal-panel');
-            requestAnimationFrame(() => {
-                if (panel) panel.scrollTop = 0;
-                const topAnchor = document.getElementById('modalTop');
-                if (topAnchor) topAnchor.focus();
-            });
+                const panel = modal.querySelector('.modal-panel');
+                requestAnimationFrame(() => {
+                    if (panel) panel.scrollTop = 0;
+                    const topAnchor = document.getElementById('modalTop');
+                    if (topAnchor) topAnchor.focus();
+                });
 
-            modal.querySelector('button').focus();
-        }
+                modal.querySelector('button').focus();
+            }
         function showGroupProfile() {
             const profiles = [
                 { name: "Pastor Clarence Duff", role: "Main Speaker & Vision Casting", img: 'Images/Clarence.jpeg' },
