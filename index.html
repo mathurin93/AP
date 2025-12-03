@@ -194,8 +194,9 @@
         <header class="text-center mb-10 reveal">
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight primary-heading-text mb-2">Reaping The Harvest
             </h1>
-            <h2 class="text-xl sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
-                Saturday, December 6, 2025 | 10:30 am</h2>
+            <h2 class="text-lg sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
+                Saturday, December 6, 2025 | 10:30 am
+            </h2>
 
             <!-- START OF UPDATED IMAGE SECTION (Made significantly larger and placed at the top) -->
             <img src="Images/Flyer1.png" alt="Church Harvest Theme Logo"
@@ -497,7 +498,7 @@
 
             <!-- Segment 17: Praise & Worship: Guest Psalmist (1:40 pm) - INTERACTIVE (Trey Duhaney WITH Socials) -->
             <div tabindex="0"
-                onclick="showProfile('Guest Psalmist Trey Duhaney', 'Trey Duhaney shares a special worship segment with the congregation.', 'Images/Trey.jpeg', 'https://instagram.com/trey_duhaney', 'https://facebook.com/trey_duhaney')"
+                onclick="showProfile('Guest Psalmist Trey Duhaney', 'Trey Duhaney shares a special worship segment with the congregation.', 'Images/Trey.jpeg', 'https://www.instagram.com/treydehaney?igsh=MTU4ZDE3OGFmanJ2ag==', 'https://youtube.com/@treydehaney?si=Av6qxzctRF23VigK')"
                 class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
@@ -626,7 +627,7 @@
             imgElement.src = `https://placehold.co/128x128/${bg}/${fg}?text=${textPlaceholder.replace(/\s/g, '+')}`;
         };
 
-        function showProfile(name, detail, imageUrl, instagramUrl = '', facebookUrl = '') {
+        function showProfile(name, detail, imageUrl, instagramUrl = '', youtubeUrl = '') {
             const content = `
             <div id="modalTop" tabindex="-1"></div>
             <img id="modalImage" src="${imageUrl}" alt="${name} Photo" 
@@ -636,7 +637,7 @@
             <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
             <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
                 ${instagramUrl && instagramUrl.startsWith('http') ? `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-instagram text-4xl'></i></a>` : ''}
-                ${facebookUrl && facebookUrl.startsWith('http') ? `<a href="${facebookUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-facebook-circle text-4xl'></i></a>` : ''}
+                ${youtubeUrl && youtubeUrl.startsWith('http') ? `<a href="${youtubeUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-youtube text-4xl'></i></a>` : ''}
             </div>
         `;
             document.getElementById('modalContentContainer').innerHTML = content;
