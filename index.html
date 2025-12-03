@@ -127,15 +127,26 @@
 
         /* Allow modal content to scroll on mobile */
         /* Mobile: modal aligns at top so content can scroll */
+        /* Mobile: backdrop sticks, panel scrolls */
         #drummerModal {
             align-items: flex-start !important;
             justify-content: center;
-            /* keep horizontal centering */
-            padding-top: 5vh !important;
-            overflow-y: auto;
+            padding-top: 20vh !important;
+            /* default for all modals */
+            overflow: hidden;
         }
 
-        /* Desktop: restore original perfect centering */
+        #drummerModal.special-105 {
+            padding-top: 10vh !important;
+            /* override for 1:05 slot */
+        }
+
+        #drummerModal .modal-panel {
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         @media (min-width: 768px) {
             #drummerModal {
                 align-items: center !important;
@@ -183,10 +194,8 @@
         <header class="text-center mb-10 reveal">
             <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight primary-heading-text mb-2">Reaping The Harvest
             </h1>
-            <h2 class="text-lg sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
-                Saturday, December 6, 2025 | 10:30 am
-            </h2>
-
+            <h2 class="text-xl sm:text-3xl font-light cream-text-highlight mb-6 header-subtle-border pb-4 inline-block">
+                Saturday, December 6, 2025 | 10:30 am</h2>
 
             <!-- START OF UPDATED IMAGE SECTION (Made significantly larger and placed at the top) -->
             <img src="Images/Flyer1.png" alt="Church Harvest Theme Logo"
@@ -567,8 +576,9 @@
 
     <!-- Profile Modal -->
     <div id="drummerModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex p-4" onclick="closeModal()">
-        <div class="main-card-bg p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-[--color-main-orange]"
+        <div class="main-card-bg p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-[--color-main-orange] modal-panel"
             onclick="event.stopPropagation()">
+
 
             <!-- Dynamic content container -->
             <div id="modalContentContainer">
@@ -595,7 +605,6 @@
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Stagger the reveal slightly
                     const idx = parseInt(entry.target.dataset.revealIndex || 0, 10);
                     const delayMs = Math.min(400, idx * 50);
                     entry.target.style.transitionDelay = delayMs + 'ms';
@@ -607,83 +616,95 @@
 
         reveals.forEach(el => observer.observe(el));
 
-
         // --- PROFILE MODAL LOGIC ---
 
-        /**
-         * Helper function to handle broken image URLs with a thematic placeholder.
-         * @param {HTMLImageElement} imgElement - The image element that failed to load.
-         * @param {string} name - The name of the person for the placeholder text.
-         */
         function handleImageError(imgElement, name) {
             imgElement.onerror = null;
             const fg = getComputedStyle(document.documentElement).getPropertyValue('--color-cream-light').replace('#', '');
             const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-main-orange').replace('#', '');
-            // Use first name or the first part of the title for the placeholder text
             const textPlaceholder = name.split(' ')[0].replace(/[^a-zA-Z]/g, '') + ' Photo';
             imgElement.src = `https://placehold.co/128x128/${bg}/${fg}?text=${textPlaceholder.replace(/\s/g, '+')}`;
         };
 
-        /**
-         * Shows a modal for a single profile.
-         */
         function showProfile(name, detail, imageUrl, instagramUrl = '', facebookUrl = '') {
-            // Build the single profile HTML structure
             const content = `
-                <img id="modalImage" src="${imageUrl}" alt="${name} Photo" onerror="handleImageError(this, '${name}')" 
-                    class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange] w-32 h-32 object-cover">
-                <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3">${name}</h3>
-                <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
-                <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
-                    ${instagramUrl && instagramUrl !== '#' && instagramUrl.startsWith('http') ? `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition' title="Instagram Profile"><i class='bx bxl-instagram text-4xl'></i></a>` : ''}
-                    ${facebookUrl && facebookUrl !== '#' && facebookUrl.startsWith('http') ? `<a href="${facebookUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition' title="Facebook Profile"><i class='bx bxl-facebook-circle text-4xl'></i></a>` : ''}
-                </div>
-            `;
+            <div id="modalTop" tabindex="-1"></div>
+            <img id="modalImage" src="${imageUrl}" alt="${name} Photo" 
+                 onerror="handleImageError(this, '${name}')" 
+                 class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange] w-32 h-32 object-cover">
+            <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3">${name}</h3>
+            <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
+            <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
+                ${instagramUrl && instagramUrl.startsWith('http') ? `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-instagram text-4xl'></i></a>` : ''}
+                ${facebookUrl && facebookUrl.startsWith('http') ? `<a href="${facebookUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'><i class='bx bxl-facebook-circle text-4xl'></i></a>` : ''}
+            </div>
+        `;
             document.getElementById('modalContentContainer').innerHTML = content;
-            document.getElementById('drummerModal').classList.remove('hidden');
-            // Accessibility focus on the modal's primary action
-            document.getElementById('drummerModal').querySelector('button').focus();
+
+            const modal = document.getElementById('drummerModal');
+            modal.classList.remove('hidden');
+            modal.classList.remove('special-105'); // ensure normal spacing
+
+            const panel = modal.querySelector('.modal-panel');
+            requestAnimationFrame(() => {
+                if (panel) panel.scrollTop = 0;
+                const topAnchor = document.getElementById('modalTop');
+                if (topAnchor) topAnchor.focus();
+            });
+
+            modal.querySelector('button').focus();
         }
 
-        /**
-         * Shows a customized modal for the three-person group profile at 1:05 PM.
-         */
         function showGroupProfile() {
-            // Define the three profiles with their unique image paths
             const profiles = [
                 { name: "Pastor Clarence Duff", role: "Main Speaker & Vision Casting", img: 'Images/Clarence.jpeg' },
                 { name: "Sis. Melleta Brown", role: "Vision & Journey Coordinator", img: 'Images/Melleta.jpeg' },
                 { name: "Sis. Anne Duff", role: "Vision & Journey Coordinator", img: 'Images/Anne.jpeg' }
             ];
 
-            // UPDATED: Changed w-24 h-24 to w-32 h-32 for bigger images in the modal
             let profilesHtml = profiles.map(p => `
-                <div class="flex flex-col items-center p-3 sm:w-1/3 w-full">
-                    <img src="${p.img}" alt="${p.name} Photo" onerror="handleImageError(this, '${p.name}')" 
-                        class="rounded-full w-32 h-32 object-cover mb-3 border-4 border-[--color-rust-tone] shadow-lg">
-                    <p class="font-bold text-xl text-center secondary-highlight-text">${p.name}</p>
-                    <p class="text-sm text-center text-[--color-brown-dark] opacity-70">${p.role}</p>
-                </div>
-            `).join('');
+            <div class="flex flex-col items-center p-3 sm:w-1/3 w-full">
+                <img src="${p.img}" alt="${p.name} Photo" 
+                     onerror="handleImageError(this, '${p.name}')" 
+                     class="rounded-full w-32 h-32 object-cover mb-3 border-4 border-[--color-rust-tone] shadow-lg">
+                <p class="font-bold text-xl text-center secondary-highlight-text">${p.name}</p>
+                <p class="text-sm text-center text-[--color-brown-dark] opacity-70">${p.role}</p>
+            </div>
+        `).join('');
 
             const content = `
-                <h3 class="text-3xl font-extrabold primary-heading-text text-center mb-6">Offering / Our Vision & Journey</h3>
-                <p class="text-[--color-brown-dark] text-center mb-6 text-lg font-medium">Pastor Duff leads the offering and vision segment, supported by Sis. Brown and Sis. Duff who help coordinate the church's strategic journey.</p>
-                <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
-                    ${profilesHtml}
-                </div>
-            `;
-
+            <div id="modalTop" tabindex="-1"></div>
+            <h3 class="text-3xl font-extrabold primary-heading-text text-center mb-6">Offering / Our Vision & Journey</h3>
+            <p class="text-[--color-brown-dark] text-center mb-6 text-lg font-medium">
+                Pastor Duff leads the offering and vision segment, supported by Sis. Brown and Sis. Duff who help coordinate the church's strategic journey.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
+                ${profilesHtml}
+            </div>
+        `;
             document.getElementById('modalContentContainer').innerHTML = content;
-            document.getElementById('drummerModal').classList.remove('hidden');
-            document.getElementById('drummerModal').querySelector('button').focus();
+
+            const modal = document.getElementById('drummerModal');
+            modal.classList.add('special-105');   // 🔑 mark this modal as the 1:05 slot
+            modal.classList.remove('hidden');
+
+            const panel = modal.querySelector('.modal-panel');
+            requestAnimationFrame(() => {
+                if (panel) panel.scrollTop = 0;
+                const topAnchor = document.getElementById('modalTop');
+                if (topAnchor) topAnchor.focus();
+            });
+
+            modal.querySelector('button').focus();
         }
 
         function closeModal() {
-            document.getElementById('drummerModal').classList.add('hidden');
+            const modal = document.getElementById('drummerModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('special-105'); // reset special styling
         }
 
-        // ESC key closes modal (still useful for desktop users)
+        // ESC key closes modal
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('drummerModal');
@@ -709,12 +730,10 @@
 
             if (!welcome) return;
 
-            // Start playing the background audio on user interaction
             if (audio) {
-                audio.volume = 0.6; // Set a slightly lower volume for background music
+                audio.volume = 0.6;
                 audio.play().catch(error => {
                     console.log("Audio autoplay was prevented:", error);
-                    // No need for a modal, just log the error if playback fails
                 });
             }
 
@@ -726,6 +745,8 @@
             }, 620);
         }
     </script>
+
+
 </body>
 
 </html>
