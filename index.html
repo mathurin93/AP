@@ -230,9 +230,9 @@
         <div class="space-y-3" id="scheduleList">
 
             <!-- Sub-Header 1: Morning Devotion & Thanksgiving Program -->
-            <h4 class="text-2xl font-bold text-center secondary-highlight-text mt-8 mb-4 reveal">Morning Devotion &
+            <!-- <h4 class="text-2xl font-bold text-center secondary-highlight-text mt-8 mb-4 reveal">Morning Devotion &
                 Thanksgiving Program</h4>
-            <div class="w-24 h-1 bg-[--color-main-orange] mx-auto rounded-full mb-6"></div>
+            <div class="w-24 h-1 bg-[--color-main-orange] mx-auto rounded-full mb-6"></div> -->
 
 
             <!-- Segment 1: Devotion (10:30 am) - INTERACTIVE (Shannon Lynch) -->
@@ -269,7 +269,7 @@
 
             <!-- Segment 3: Relay Speaker 1 (11:05 am) - INTERACTIVE (Pastor Mark Hibbert) -->
             <div tabindex="0"
-                onclick="showProfile('Pastor Mark Hibbert', 'First in the relay speaker segment.', 'Images/Mark.jpeg')"
+                onclick="showProfile('Pastor Mark Hibbert', 'First in the relay speaker segment.', 'Images/Mark.jpeg', '', '', '', bios.mark)"
                 class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
@@ -285,7 +285,7 @@
 
             <!-- Segment 4: Relay Speaker 2 (11:25 am - approximate) - INTERACTIVE (Bro. Matt Robinson) -->
             <div tabindex="0"
-                onclick="showProfile('Bro. Matt Robinson', 'Second in the relay speaker segment.', 'Images/Matt.jpeg', '', '', 'https://mattrobinsondeveloper.com/')"
+                onclick="showProfile('Bro. Matt Robinson', 'Second in the relay speaker segment.', 'Images/Matt.jpeg', '', '', 'https://mattrobinsondeveloper.com/', bios.matt)"
      class="schedule-item interactive schedule-item-even reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
@@ -301,7 +301,7 @@
 
             <!-- Segment 5: Relay Speaker 3 (11:40 am - approximate) - INTERACTIVE (Evan. Chase Ricketts) -->
             <div tabindex="0"
-                onclick="showProfile('Evan. Chase Ricketts', 'Third and final speaker in the relay segment.', 'Images/Chase.jpeg')"
+                onclick="showProfile('Evan. Chase Ricketts', 'Third and final speaker in the relay segment.', 'Images/Chase.jpeg', '', '', '', bios.chase)"
                 class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
@@ -432,16 +432,30 @@
                 </div>
             </div>
 
-            <!-- Segment 14: Offering / Our Vision & Journey (1:05 pm - 1:15 pm) - INTERACTIVE (Pastor Duff, Sis. Brown, Sis. Duff) -->
-            <div tabindex="0" onclick="showGroupProfile()"
-                class="schedule-item interactive reveal flex flex-col items-center p-5 rounded-xl shadow-lg border-l-4 gold-highlight-box transition-all duration-300 ease-in-out">
-
+            <!-- Segment 14a: Offering / Vision & Journey (1:05 pm) - INTERACTIVE (Pastor Clarence Duff) -->
+            <div tabindex="0" onclick="showProfile('Pastor Clarence Duff', 'Sharing the Vision & Journey.', 'Images/Clarence.jpeg')"
+                class="schedule-item interactive reveal flex flex-col items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
+            
                 <div class="w-full flex justify-between items-center">
                     <span class="w-full flex flex-col items-start">
-                        <span class="cream-text-highlight text-xl font-extrabold">1:05 pm | Offering & Our Vision &
-                            Journey</span>
-                        <span class="secondary-highlight-text text-lg">Pastor Clarence Duff, Sis. Melleta Brown, Sis.
-                            Anne Duff</span>
+                        <span class="cream-text-highlight text-xl font-extrabold">1:05 pm | Offering & Vision & Journey</span>
+                        <span class="secondary-highlight-text text-lg">Pastor Clarence Duff</span>
+                    </span>
+                    <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Segment 14b: Acknowledge & Award (1:10 pm) - INTERACTIVE (Sis. Melleta Brown & Sis. Anne Duff) -->
+            <div tabindex="0" onclick="showGroupProfile('acknowledgeAward')"
+                class="schedule-item interactive reveal flex flex-col items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
+            
+                <div class="w-full flex justify-between items-center">
+                    <span class="w-full flex flex-col items-start">
+                        <span class="cream-text-highlight text-xl font-extrabold">1:10 pm | Acknowledge & Award</span>
+                        <span class="secondary-highlight-text text-lg">Sis. Melleta Brown, Sis. Anne Duff</span>
                     </span>
                     <svg class="w-5 h-5 secondary-highlight-text flex-shrink-0 ml-2" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -450,19 +464,6 @@
                 </div>
             </div>
 
-            <div id="groupProfileImages" class="flex justify-center space-x-4 mb-4 mt-2 w-full" style="display: none;">
-                <img src="Images/Clarence.jpeg" alt="Pastor Clarence Duff"
-                    onerror="this.onerror=null;this.src='Images/Clarence.jpeg';"
-                    class="rounded-full w-16 h-16 object-cover border-2 border-[--color-main-orange] shadow-lg flex-shrink-0">
-
-                <img src="Images/Melleta.jpeg" alt="Sis. Melleta Brown"
-                    onerror="this.onerror=null;this.src='Images/Melleta.jpeg';"
-                    class="rounded-full w-16 h-16 object-cover border-2 border-[--color-main-orange] shadow-lg flex-shrink-0">
-
-                <img src="Images/Anne.jpeg" alt="Sis. Anne Duff"
-                    onerror="this.onerror=null;this.src='Images/Anne.jpeg';"
-                    class="rounded-full w-16 h-16 object-cover border-2 border-[--color-main-orange] shadow-lg flex-shrink-0">
-            </div>
 
             <!-- Segment 15: Selection: COG Brampton Choir (1:15 pm) - INTERACTIVE (COG Brampton Choir) -->
             <div tabindex="0"
@@ -499,7 +500,7 @@
             <!-- Segment 17: Praise & Worship: Guest Psalmist (1:40 pm) - INTERACTIVE (Trey Duhaney WITH Socials) -->
             <div tabindex="0"
                 onclick="showProfile('Guest Psalmist Trey Duhaney', 'Trey Duhaney shares a special worship segment with the congregation.', 'Images/Trey.jpeg', 'https://www.instagram.com/treydehaney?igsh=MTU4ZDE3OGFmanJ2ag==', 'https://youtube.com/@treydehaney?si=Av6qxzctRF23VigK')"
-                class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
+                class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 gold-highlight-box transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">1:40 pm | Praise & Worship</span>
@@ -532,7 +533,7 @@
             <!-- Segment 19: Main Speaker (2:20 pm) - INTERACTIVE (Pastor Clarence Duff) -->
             <div tabindex="0"
                 onclick="showProfile('Main Speaker: Pastor Clarence Duff', 'Delivering the keynote address: Reaping the Harvest.', 'Images/Clarence.jpeg')"
-                class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 bg-white/5 transition-all duration-300 ease-in-out">
+                class="schedule-item interactive reveal flex items-center p-5 rounded-xl shadow-lg border-l-4 gold-highlight-box transition-all duration-300 ease-in-out">
                 <div class="w-full flex justify-between items-center">
                     <span class="flex flex-col items-start">
                         <span class="font-bold cream-text-highlight">2:20 pm | Main Speaker</span>
@@ -627,7 +628,7 @@
             imgElement.src = `https://placehold.co/128x128/${bg}/${fg}?text=${textPlaceholder.replace(/\s/g, '+')}`;
         };
 
-        function showProfile(name, detail, imageUrl, instagramUrl = '', youtubeUrl = '', websiteUrl = '') {
+        function showProfile(name, detail, imageUrl, instagramUrl = '', youtubeUrl = '', websiteUrl = '', bio = '') {
                 const content = `
         <div id="modalTop" tabindex="-1"></div>
         <img id="modalImage" src="${imageUrl}" alt="${name} Photo" 
@@ -635,6 +636,7 @@
              class="rounded-lg mx-auto mb-4 border-2 border-[--color-main-orange] w-32 h-32 object-cover">
         <h3 id="modalName" class="text-3xl font-extrabold secondary-highlight-text text-center mb-3">${name}</h3>
         <p id="modalDetail" class="text-[--color-brown-dark] text-center mb-6 text-base">${detail}</p>
+        ${bio ? `<div class="text-[--color-brown-dark] text-sm leading-relaxed mb-6 px-4">${bio}</div>` : ''}
         <div id="socialLinks" class="flex justify-center space-x-6 mb-4">
             ${instagramUrl && instagramUrl.startsWith('http') ?
                         `<a href="${instagramUrl}" target="_blank" class='secondary-highlight-text hover:text-[--color-brown-dark] transition'>
@@ -665,11 +667,11 @@
 
                 modal.querySelector('button').focus();
             }
+
         function showGroupProfile() {
             const profiles = [
-                { name: "Pastor Clarence Duff", role: "Main Speaker & Vision Casting", img: 'Images/Clarence.jpeg' },
-                { name: "Sis. Melleta Brown", role: "Vision & Journey Coordinator", img: 'Images/Melleta.jpeg' },
-                { name: "Sis. Anne Duff", role: "Vision & Journey Coordinator", img: 'Images/Anne.jpeg' }
+                { name: "Sis. Melleta Brown", role: "Acknowledgement & Award Presenter", img: 'Images/Melleta.jpeg' },
+                { name: "Sis. Anne Duff", role: "Acknowledgement & Award Presenter", img: 'Images/Anne.jpeg' }
             ];
 
             // Build the profile cards
@@ -759,6 +761,24 @@
                 welcome.classList.add('hidden');
             }, 620);
         }
+
+        const bios = {
+                mark: `Mark Hibbert's journey is one of transformation and dedication, both professionally and spiritually, by the grace of God. Starting his career as an electrician, Mark steadily excelled at the University of Toronto to the current position of capital assets manager.<br><br>
+  Parallel to his professional success, Mark's spiritual journey began with a profound conversion experience that ignited his passion for ministry. He started by leading his local youth ministry, where he was able to develop his leadership skills. His impact grew, and he took on a national role in youth ministry, eventually transitioning to leading the men's ministry at his local church.<br><br>
+  Recently ordained as a pastor, Mark is embracing the true meaning of servanthood, striving to live a life of humility and service. His personal life is equally fulfilling, marked by 18 years of marriage to his supportive wife and the joy of raising four beautiful children.<br><br>
+  Mark's aspiration is clear: to inspire and restore those around him with the truth, leveraging his varied experiences and deep faith to make a lasting difference in his community.`,
+
+                matt: `Matt Robinson’s journey is defined by a commitment to stewardship and the nurturing of souls within the body of Christ. Grounded in his faith, he has found his calling in equipping others with the tools they need to navigate their spiritual walk.<br><br>
+  Currently, Matt plays a vital role at the Church of God Sabbath-Keeping Ministries in Brampton. Serving as a teacher in the Christian Education Ministry (CEM), he combines biblical insight with practical application. His ministry extends to the youth as well, where he serves in the Redeemed Youth Ministry (RYM), helping to shape the character and faith of tomorrow’s leaders.<br><br>
+  His personal life is his first ministry, where he treasures his role as a husband and a father to three beautiful girls. Matt’s aspiration is to leave a legacy of faith, modeling the love of Christ both in his home and within the church community.`,
+
+                chase: `Evangelist Chase Ricketts loves the Lord and the Church of God, he gave his life to the Lord over 27 years ago. Today he serves as an Evangelist and Teacher in the Church of God Sabbath-Keeping Ministries, Brampton. Chase loves the Word of God and has demonstrated an unwavering commitment to the studying, living and teaching of the word of God. He also has a passion for souls, and a resolve for the service of the Lord Jesus Christ to practice discipleship and to lead others into the Kingdom of God.<br><br>
+  He holds firmly to the truth of scripture and acknowledges that “heart work is God’s work” in the vineyard of the Lord. He finds great comfort and assurance in the scriptures especially Romans 8:28.<br><br>
+  Chase currently holds a Bachelor’s degree with Honors (Cum Laude) in Psychology from York University. He has been married to the beautiful Melonie Ricketts for over 16 years and their union has produced four wonderful children.`,
+
+                clarence: `Bio coming soon...`
+            };
+
     </script>
 
 </body>
